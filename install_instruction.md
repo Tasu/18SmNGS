@@ -1,4 +1,4 @@
-# amplicon_sorter install
+### amplicon_sorter install https://github.com/avierstr/amplicon_sorter
 0. please finish installing conda (miniconda3)
  - please make sure that conda init is done.
  - please make sure you have (base) for shell prompt.
