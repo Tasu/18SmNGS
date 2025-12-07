@@ -18,11 +18,11 @@ conda info -e
 conda create -y -n minibar python=2.7
 ```
 
-2. activate minibar env
+2. activate minibar env, locating minibar env bin directory 
 ```bash
 #activating "minibar" env
 conda activate minibar
-#please check the conda environment is (amplicon_sorter)
+#please check the conda environment is (minibar)
 conda info -e
 #please check the pip in the environment is for this environment
 which pip
@@ -51,9 +51,10 @@ git clone https://github.com/calacademy-research/minibar.git
 
 5. test the installation
 ```bash
+conda activate minibar
 python ~/download/github/minibar/minibar.py -v
 ```
-6. copy minibar.py to minibar env bin directory, modify the permission for execution.
+6. copy minibar.py to minibar env bin directory, modify a permission of minibar.py for execution.
 ```bash
 cp ~/download/github/minibar/minibar.py ${CONDAENVBINDIR}
 chmod +x  ${CONDAENVBINDIR}/minibar.py
