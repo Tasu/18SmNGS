@@ -15,7 +15,7 @@ conda info -e
 conda create -y -n amplicon_sorter python=3.9
 ```
 
-2. activate amplicon_sorter
+2. activate amplicon_sorter env
 ```bash
 #activating "amplicon_sorter" env
 conda activate amplicon_sorter
@@ -27,7 +27,7 @@ which python
 python --version
 ```
 
-3. install dependency using pip
+3. install dependency using pip in amplicon_sorter env
 - https://github.com/avierstr/amplicon_sorter
 ```bash
 #check if pip install your library to amplicon_sorter env only.
