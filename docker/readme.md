@@ -23,15 +23,17 @@ git clone ${URL_FOR_THIS_GITREPO_HERE}
   #bind data directory if required.
   # Run with port mappings:
   #  - Jupyter: host 28555 -> container 8555
+  # please change $PWD to directory you want to work with
   docker run \
     --rm \
+     -d \
      -v $PWD:/data \
      -p 28555:8555 \
-     env18s
-# don't shutdown terminal, or disown process.
+     env18s 
+# if you want to stop, close container from docker desktop
   ```
  
 ## access jupyter
   ```bash
-  http://localhost:28555/lab/
+  http://localhost:28555/lab/   
   ```
