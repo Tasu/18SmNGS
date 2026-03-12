@@ -24,9 +24,8 @@ git clone ${URL_FOR_THIS_GITREPO_HERE}
   # Run with port mappings:
   #  - Jupyter: host 28555 -> container 8555
   docker run \
-     -e SSH_USER=%myuser% -e SSH_PASSWORD=%mypass% \
     --rm \
-     -v %YOURDATA_DIR%:/data \
+     -v $PWD:/data \
      -p 28555:8555 \
      env18s
 # don't shutdown terminal, or disown process.
