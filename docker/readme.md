@@ -1,7 +1,3 @@
-- this docker image can be used to skip the installation of all the tools required for 18S mNGS analysis
-- required database should be prepared separately.
-- 
-
 ## build docker image
 1. this dockerfile was tested with 86x64 and arm64(apple silicon, with docker desktop)
 - git clone this repository
@@ -27,28 +23,27 @@ git clone ${URL_FOR_THIS_GITREPO_HERE}
   #bind data directory if required.
   # Run with port mappings:
   #  - Jupyter: host 28555 -> container 8555
-  # please change $PWD to directory you want to work with
   docker run \
     --rm \
-     -d \
      -v $PWD:/data \
      -p 28555:8555 \
-     env18s 
-# if you want to stop, close container from docker desktop
+     env18s
+# don't shutdown terminal, or disown process.
   ```
  
 ## access jupyter
   ```bash
-  http://localhost:28555/lab/   
+  http://localhost:28555/lab/
   ```
+
 ## put required tool
  ```bash 
  # retrieve from github repository for each tool.
  # if you put in /data/tool
  # /data/tool/minibar.py
- python /data/tool/minibar.py -h
+ python /data/files/tool/minibar.py -h
  # /data/tool/amplicon_sorter.py
- python /data/tool/amplicon_sorter.py -h
+ python /data/files/tool/amplicon_sorter.py -h
  
  ```
 
