@@ -27,4 +27,5 @@ export JUPYTER_ALLOW_INSECURE_WRITES=1
 nohup pixi run jupyter-lab --no-browser --ip=0.0.0.0 --port=8555 --allow-root --ServerApp.root_dir=/app/files --ServerApp.token='' --ServerApp.password='' > /app/jupyter.log 2>&1 &
 
 # Keep container alive by running sshd in foreground as PID1
-exec /usr/sbin/sshd -D
+# sshd is off in default
+# exec /usr/sbin/sshd -D
