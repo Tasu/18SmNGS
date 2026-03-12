@@ -41,3 +41,19 @@ git clone ${URL_FOR_THIS_GITREPO_HERE}
   ```bash
   http://localhost:28555/lab/   
   ```
+## put required tool
+ ```bash 
+ # retrieve from github repository for each tool.
+ # if you put in /data/tool
+ # /data/tool/minibar.py
+ python /data/tool/minibar.py -h
+ # /data/tool/amplicon_sorter.py
+ python /data/tool/amplicon_sorter.py -h
+ 
+ ```
+
+ ## check other tools
+ ```bash 
+  seqkit --help
+  porechop --help
+ ```
