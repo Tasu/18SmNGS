@@ -1,3 +1,7 @@
+- this docker image can be used to skip the installation of all the tools required for 18S mNGS analysis
+- required database should be prepared separately.
+- 
+
 ## build docker image
 1. this dockerfile was tested with 86x64 and arm64(apple silicon, with docker desktop)
 - git clone this repository
