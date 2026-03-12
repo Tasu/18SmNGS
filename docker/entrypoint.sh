@@ -12,9 +12,9 @@ fi
 echo "$SSH_USER:$SSH_PASSWORD" | chpasswd
 
 # Make sure SSH allows password auth and disable root login for safety
-sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config || true
-sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config || true
-sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config || true
+#sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config || true
+#sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config || true
+#sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config || true
 
 # Start sshd (keep as the foreground process so container stays alive).
 mkdir -p /var/run/sshd
@@ -28,4 +28,4 @@ exec pixi run jupyter-lab --no-browser --ip=0.0.0.0 --port=8555 --allow-root --S
 
 # Keep container alive by running sshd in foreground as PID1
 # sshd is off in default
-# exec /usr/sbin/sshd -D
+exec /usr/sbin/sshd -D
