@@ -24,7 +24,7 @@ mkdir -p /var/run/sshd
 # Start legacy Jupyter Notebook on port 8555, notebook dir /app/files, no token (dev only)
 export JUPYTER_ALLOW_INSECURE_WRITES=1
 # Start Jupyter Notebook on 127.0.0.1:8555 with base url /jupyter (dev only)
-nohup pixi run jupyter-lab --no-browser --ip=0.0.0.0 --port=8555 --allow-root --ServerApp.root_dir=/app/files --ServerApp.token='' --ServerApp.password='' > /app/jupyter.log 2>&1 &
+exec pixi run jupyter-lab --no-browser --ip=0.0.0.0 --port=8555 --allow-root --ServerApp.root_dir=/data --ServerApp.token='' --ServerApp.password='' > /app/jupyter.log 2>&1 &
 
 # Keep container alive by running sshd in foreground as PID1
 # sshd is off in default
