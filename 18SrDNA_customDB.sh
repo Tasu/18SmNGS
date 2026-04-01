@@ -1,6 +1,6 @@
 #making 18S rDNA barcode db from ncbi genbank entry. this script is based on the crabsv0.1.7, seqkit v2.3.0, blast2.13.0
 #crabs were usd.
-#for mammalian host, only human, cattle and dogs will be downloaded.
+#for mammalian host, we remove later and add human only to shrinnk database size
 crabs db_download --source ncbi \
  --database nucleotide \
  --query \
@@ -17,9 +17,13 @@ crabs dereplicate --input SSU_euk_ncbi_1000_3000_PGA_tax.tsv --output SSU_euk_nc
 
 crabs seq_cleanup --input SSU_euk_ncbi_1000_3000_PGA_tax_uniq.tsv --output SSU_euk_ncbi_1000_3000_PGA_tax_uniq_clean.tsv --minlen 800 --maxlen 2000 --maxns 0 --enviro yes --species yes --nans 0
 
+
 curated_tsv=SSU_euk_ncbi_1000_3000_PGA_tax_uniq_clean.tsv
+#remove mammalian sequence first
 grep -v Mammalia $curated_tsv > ${curated_tsv%%.tsv}_woMammal_human.tsv
+#add back human sequence to without mammal sequences.
 grep Homo_sapiens $curated_tsv >> ${curated_tsv%%.tsv}_woMammal_human.tsv
+
 
 curated_tsv=SSU_euk_ncbi_1000_3000_PGA_tax_uniq_clean_woMammal_human.tsv
 curated_fasta=SSU_euk_ncbi_1000_3000_PGA_tax_uniq_clean_woMammal_human.fasta
@@ -27,6 +31,7 @@ curated_taxmap=SSU_euk_ncbi_1000_3000_PGA_tax_uniq_clean_woMammal_human.taxmap.t
 cut -f1,2 $curated_tsv |sed -e "s/\t/ /g" | tail -n +2> $curated_taxmap
 cut -f1,9,10 $curated_tsv |sed -e "s/\t/ /"|seqkit tab2fx| tail -n +3 > $curated_fasta
 
+# you need ncbi-blast you want to use in the actual pipeline.
 makeblastdb -in $curated_fasta \
  -input_type fasta \
  -dbtype nucl \
